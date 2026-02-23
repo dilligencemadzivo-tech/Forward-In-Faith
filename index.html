@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.75">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Forward In Faith | Church Management System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -280,6 +280,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Loading Screen */
@@ -304,6 +305,9 @@ body {
 
 .loader {
     text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .loader-spinner {
@@ -1938,169 +1942,6 @@ input:focus, select:focus, textarea:focus {
     color: var(--cross-red);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .app-container {
-        flex-direction: column;
-    }
-    
-    .sidebar {
-        width: 100%;
-        height: auto;
-        padding: 10px 0;
-    }
-    
-    .nav-menu {
-        display: flex;
-        overflow-x: auto;
-        padding: 0 10px;
-    }
-    
-    .nav-item {
-        flex-shrink: 0;
-        margin-bottom: 0;
-        margin-right: 10px;
-    }
-    
-    .dashboard-overview {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-    
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-    
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-    
-    .header-actions {
-        width: 100%;
-        justify-content: space-between;
-    }
-    
-    .member-profile-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .member-profiles-container {
-        flex-direction: column;
-    }
-    
-    .member-profiles-sidebar {
-        width: 100%;
-    }
-}
-
-/* Phone-specific styles */
-@media (max-width: 480px) {
-    .sidebar {
-        padding: 5px 0;
-    }
-    
-    .nav-item {
-        font-size: 0.9rem;
-        padding: 8px 12px;
-    }
-    
-    .dashboard-overview {
-        grid-template-columns: 1fr;
-    }
-    
-    .header h1 {
-        font-size: 1.5rem;
-    }
-    
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        font-size: 16px; /* Prevents zoom on iOS */
-    }
-    
-    .btn {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-    }
-    
-    /* Login form mobile styles */
-    .login-container {
-        grid-template-columns: 1fr;
-        padding: 0;
-        min-height: 100vh;
-    }
-    
-    .login-box {
-        width: 100%;
-        height: 100vh;
-        max-width: none;
-        padding: 20px;
-        border-radius: 0;
-        margin: 0;
-        grid-column: 1;
-    }
-    
-    .login-logo {
-        margin-bottom: 20px;
-    }
-    
-    .login-logo h1 {
-        font-size: 2rem;
-    }
-    
-    .login-logo p {
-        font-size: 0.9rem;
-    }
-    
-    .login-tabs {
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    
-    .login-tab {
-        font-size: 0.95rem;
-        padding: 6px 12px;
-    }
-    
-    .login-form .form-group {
-        margin-bottom: 20px;
-    }
-    
-    .login-form label {
-        font-size: 0.9rem;
-    }
-    
-    .login-form input,
-    .login-form select {
-        padding: 12px 14px;
-        font-size: 16px;
-    }
-    
-    .login-btn {
-        padding: 14px 20px;
-        font-size: 0.95rem;
-        margin-top: 15px;
-    }
-    
-    .login-footer {
-        margin-top: 20px;
-        padding-top: 15px;
-        font-size: 0.8rem;
-    }
-    
-    .header-actions {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    
-    .fullscreen-btn {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-    }
-}
-
 /* Service Tags */
 .service-tag {
     display: inline-block;
@@ -2190,6 +2031,452 @@ input:focus, select:focus, textarea:focus {
 .bg-soft-light {
     background-color: var(--soft-light-gray);
 }
+
+/* ==================== ENHANCED MOBILE RESPONSIVENESS ==================== */
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+    background: linear-gradient(135deg, var(--royal-blue), var(--deep-blue));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Mobile Header Actions */
+.mobile-header-actions {
+    display: none;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+    gap: 10px;
+}
+
+.mobile-header-actions button {
+    background: linear-gradient(135deg, var(--royal-blue), var(--deep-blue));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .member-profile-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    /* Sidebar transforms into overlay */
+    .sidebar {
+        position: fixed;
+        left: -280px;
+        top: 0;
+        bottom: 0;
+        width: 280px;
+        z-index: 1001;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+    }
+    
+    .sidebar.mobile-open {
+        left: 0;
+    }
+    
+    /* Mobile menu toggle visible */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .mobile-header-actions {
+        display: flex;
+    }
+    
+    /* Adjust main content */
+    .main-content {
+        margin-left: 0;
+        padding: 70px 15px 20px;
+    }
+    
+    /* Hide desktop header actions */
+    .header-actions {
+        display: none;
+    }
+    
+    /* Adjust header */
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        margin-top: 10px;
+    }
+    
+    .header-user {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    /* Member profiles container */
+    .member-profiles-container {
+        flex-direction: column;
+    }
+    
+    .member-profiles-sidebar {
+        width: 100%;
+    }
+    
+    /* Member profile header */
+    .member-profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .member-profile-avatar {
+        margin: 0 auto;
+    }
+    
+    /* Calendar grid */
+    .calendar-grid {
+        font-size: 0.8rem;
+    }
+    
+    .calendar-day {
+        min-height: 60px;
+        padding: 5px;
+    }
+    
+    /* Modal */
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        margin: 10px;
+        max-height: 85vh;
+    }
+    
+    /* Login container */
+    .login-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .login-box {
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        padding: 40px 20px;
+        margin: 0;
+    }
+    
+    /* Tabs */
+    .tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab {
+        flex: 1 1 calc(50% - 5px);
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+    
+    /* Dashboard stats */
+    .dashboard-overview {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .stat-card {
+        padding: 15px;
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .stat-icon i {
+        font-size: 1.4rem;
+    }
+    
+    .stat-info h3 {
+        font-size: 1.4rem;
+    }
+    
+    /* Quick actions */
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    /* Notifications panel */
+    .notifications-panel {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .notifications-panel.active {
+        right: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Even smaller screens */
+    .dashboard-overview {
+        grid-template-columns: 1fr;
+    }
+    
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Member cards grid */
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Profile details grid */
+    .member-profile-details-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    /* Document item */
+    .document-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .document-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .document-actions {
+        margin-top: 10px;
+    }
+    
+    /* Ministry card */
+    .ministry-card-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    /* Form rows */
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    /* Calendar */
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+    }
+    
+    .calendar-day {
+        min-height: 50px;
+        font-size: 0.7rem;
+        padding: 3px;
+    }
+    
+    .calendar-event {
+        font-size: 0.6rem;
+        padding: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* Toast notifications */
+    #toast-container {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+    }
+    
+    .toast {
+        max-width: 100%;
+        margin: 5px 0;
+    }
+    
+    /* Login tabs */
+    .login-tabs {
+        gap: 10px;
+    }
+    
+    .login-tab {
+        font-size: 0.95rem;
+        padding: 8px 12px;
+    }
+    
+    /* Table responsiveness */
+    .data-table th,
+    .data-table td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-sm {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+    
+    /* Modal header */
+    .modal-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .modal-close {
+        font-size: 1.2rem;
+    }
+    
+    /* Member card details */
+    .member-card-details {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 380px) {
+    /* Very small phones */
+    .calendar-day {
+        min-height: 40px;
+    }
+    
+    .calendar-day-header {
+        font-size: 0.6rem;
+    }
+    
+    .tab {
+        font-size: 0.8rem;
+        padding: 6px 8px;
+    }
+    
+    .member-profile-avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+    
+    .member-profile-name {
+        font-size: 1.4rem;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .nav-item,
+    .btn,
+    .tab,
+    .ministry-filter-item,
+    .member-card,
+    .quick-action {
+        min-height: 44px;
+    }
+    
+    /* Remove hover effects on mobile */
+    .btn:hover,
+    .nav-item:hover,
+    .member-card:hover,
+    .quick-action:hover {
+        transform: none;
+    }
+    
+    /* Active states for touch */
+    .btn:active,
+    .nav-item:active,
+    .member-card:active {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+    
+    /* Better scrolling */
+    .main-content,
+    .notifications-list,
+    .modal-content {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Form inputs */
+    input, select, textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* Overlay for mobile menu */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+
+.mobile-overlay.active {
+    display: block;
+}
+
+/* Print styles */
+@media print {
+    .sidebar,
+    .header-actions,
+    .logout-btn,
+    .notifications-container,
+    .fullscreen-btn,
+    .dark-mode-btn,
+    .quick-actions,
+    .btn {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin: 0;
+        padding: 20px;
+    }
+    
+    .card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
 </style>
 </head>
 <body>
@@ -2204,6 +2491,25 @@ input:focus, select:focus, textarea:focus {
             </button>
         </div>
     </div>
+    
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Mobile Header Actions -->
+    <div class="mobile-header-actions" id="mobile-header-actions">
+        <button class="mobile-notifications-btn" id="mobile-notifications-btn">
+            <i class="fas fa-bell"></i>
+            <span class="notifications-count" id="mobile-notifications-count">0</span>
+        </button>
+        <button class="mobile-dark-mode-btn" id="mobile-dark-mode-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
     
     <!-- Login Screen (Initially Visible) -->
     <div class="login-container" id="login-container">
@@ -2286,7 +2592,7 @@ input:focus, select:focus, textarea:focus {
     <!-- CRM Application (Initially Hidden) -->
     <div class="app-container" id="app-container">
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="logo" style="display: flex; align-items: center; gap: 12px;">
                 <img src="logo.png" alt="Logo" style="max-width: 48px; height: 48px; display: block; margin: 0;">
                 <div>
@@ -3945,6 +4251,51 @@ input:focus, select:focus, textarea:focus {
             }
         }
         
+        // ==================== MOBILE MENU FUNCTIONS ====================
+        function initMobileMenu() {
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobile-overlay');
+            
+            if (menuToggle && sidebar && overlay) {
+                menuToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('mobile-open');
+                    overlay.classList.toggle('active');
+                });
+                
+                overlay.addEventListener('click', function() {
+                    sidebar.classList.remove('mobile-open');
+                    overlay.classList.remove('active');
+                });
+                
+                // Close menu when clicking on a nav item (for better UX)
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        if (window.innerWidth <= 900) {
+                            sidebar.classList.remove('mobile-open');
+                            overlay.classList.remove('active');
+                        }
+                    });
+                });
+            }
+            
+            // Sync notifications count to mobile
+            const mobileNotifBtn = document.getElementById('mobile-notifications-btn');
+            const notifBtn = document.getElementById('notifications-btn');
+            
+            if (mobileNotifBtn && notifBtn) {
+                mobileNotifBtn.addEventListener('click', function() {
+                    document.getElementById('notifications-panel').classList.toggle('active');
+                });
+            }
+            
+            // Mobile dark mode toggle
+            const mobileDarkToggle = document.getElementById('mobile-dark-mode-toggle');
+            if (mobileDarkToggle) {
+                mobileDarkToggle.addEventListener('click', toggleDarkMode);
+            }
+        }
+        
         // ==================== INITIALIZATION ====================
         
         document.addEventListener('DOMContentLoaded', function() {
@@ -3995,6 +4346,9 @@ input:focus, select:focus, textarea:focus {
                     console.error('Error loading saved user:', e);
                 }
             }
+            
+            // Initialize mobile menu
+            initMobileMenu();
             
             // Login functionality
             const loginForm = document.getElementById('login-form');
@@ -4760,6 +5114,7 @@ input:focus, select:focus, textarea:focus {
             
             // Notifications
             document.getElementById('notifications-btn')?.addEventListener('click', toggleNotifications);
+            document.getElementById('mobile-notifications-btn')?.addEventListener('click', toggleNotifications);
             document.getElementById('close-notifications')?.addEventListener('click', () => {
                 document.getElementById('notifications-panel').classList.remove('active');
             });
@@ -5070,6 +5425,7 @@ input:focus, select:focus, textarea:focus {
         // Initialize Dark Mode
         function initializeDarkMode() {
             const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const mobileDarkToggle = document.getElementById('mobile-dark-mode-toggle');
             
             // Load saved theme preference
             const savedTheme = localStorage.getItem('theme');
@@ -5080,6 +5436,10 @@ input:focus, select:focus, textarea:focus {
             
             if (darkModeToggle) {
                 darkModeToggle.addEventListener('click', toggleDarkMode);
+            }
+            
+            if (mobileDarkToggle) {
+                mobileDarkToggle.addEventListener('click', toggleDarkMode);
             }
         }
         
@@ -5094,11 +5454,21 @@ input:focus, select:focus, textarea:focus {
         
         function updateDarkModeButton(isDark) {
             const darkModeToggle = document.getElementById('dark-mode-toggle');
+            const mobileDarkToggle = document.getElementById('mobile-dark-mode-toggle');
+            
             if (darkModeToggle) {
                 if (isDark) {
                     darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
                 } else {
                     darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+                }
+            }
+            
+            if (mobileDarkToggle) {
+                if (isDark) {
+                    mobileDarkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    mobileDarkToggle.innerHTML = '<i class="fas fa-moon"></i>';
                 }
             }
         }
@@ -6235,6 +6605,7 @@ input:focus, select:focus, textarea:focus {
             const notificationCount = state.notifications.length || 3; // Demo count
             document.getElementById('dashboard-notifications').textContent = notificationCount;
             document.getElementById('notifications-count').textContent = notificationCount;
+            document.getElementById('mobile-notifications-count').textContent = notificationCount;
         }
         
         // Update Settings
